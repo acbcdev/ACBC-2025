@@ -1,0 +1,51 @@
+---
+import { Button } from "@/components/ui/button";
+import GithubSvg from "@/svg/github.svg";
+import LinkedinSvg from "@/svg/linkedin.svg";
+---
+
+<section class="mt-16 flex flex-col gap-y-5">
+  <header>
+    <h1 class="text-4xl font-bold">Hi<br /> I'm a Camilo Blandon</h1>
+  </header>
+  <p class="text-muted-foreground">
+    I'm a passionate frontend programming student. I create exceptional web
+    experiences using technologies like React, Next.js, and more. My thirst for
+    learning is infinite, and I'm also fascinated by artificial intelligence. In
+    constant evolution, I'm always ready to embrace new technologies and
+    challenges. Never stop learning!
+  </p>
+
+  <footer class="flex gap-x-2">
+    <Button className="btn">
+      <a
+        href="https://www.linkedin.com/in/acbc-dev/"
+        class="inline-flex gap-x-1"
+        >Linkedin <LinkedinSvg class="fill-white" /><a> </a>
+      </a>
+    </Button>
+    <Button className="btn">
+      <a class="inline-flex gap-x-1" href="https://github.com/acbcdev"
+        >GitHub <GithubSvg /></a
+      >
+    </Button>
+  </footer>
+</section>
+
+<style>
+  .btn {
+    /* @apply bg-background border text-foreground; */
+    background-color: var(--background);
+    color: var(--foreground);
+    background: radial-gradient(
+      100% 100% at 50% 100%,
+      rgba(130, 71, 229, 0.2) 0%,
+      rgba(49, 38, 89, 0.2) 50%
+    );
+    box-shadow:
+      0 0 20px rgba(54, 53, 56, 0.15),
+      inset 0 0 20px rgba(130, 71, 229, 0.05);
+    border: 1px solid rgba(58, 57, 59, 0.1);
+    backdrop-filter: blur(60px);
+  }
+</style>
