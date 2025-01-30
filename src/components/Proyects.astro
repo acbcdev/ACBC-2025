@@ -1,7 +1,6 @@
 ---
 import type { ProyectType } from "@/types/Proyect";
 import GithubSvg from "@/svg/github.svg";
-import SpotlightCard from "@/components/Card/SpotlightCard";
 
 const projects: ProyectType[] = [
   {
@@ -67,7 +66,6 @@ const projects: ProyectType[] = [
         <article
           class={`border  rounded-lg card  overflow-hidden  to-80% backdrop-blur-3xl group/card`}
         >
-          {/* <SpotlightCard client:load className="  bg-transparent"> */}
           <a href={proyect.link} target="_blank">
             <img
               src={`https://acbc.dev/${proyect.img}`}
@@ -75,12 +73,7 @@ const projects: ProyectType[] = [
               alt={proyect.name}
             />
           </a>
-          {/* 
-              
-              className="custom-spotlight-card"
-              spotlightColor="rgba()"
-            
-            spotlightColor="rgba(0, 229, 255, 0.2)"/*/}
+
           <main class="text-start p-5 group-hover/card:bg-gradient-to-t from-background transition-all duration-500">
             <div class="flex  justify-between items-center">
               <h3 class="text-2xl font-bold  py-2">{proyect.name}</h3>
@@ -90,7 +83,6 @@ const projects: ProyectType[] = [
             </div>
             <p>{proyect.description}</p>
           </main>
-          {/* </SpotlightCard> */}
         </article>
       ))
     }
