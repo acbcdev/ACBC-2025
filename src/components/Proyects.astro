@@ -1,0 +1,89 @@
+---
+import type { ProyectType } from "@/types/Proyect";
+import GithubSvg from "@/svg/github.svg";
+
+const projects: ProyectType[] = [
+  {
+    link: "https://runts.acbc.dev/",
+    github: "https://github.com/acbcdev/RunTS",
+    img: "/img/runts.webp",
+    tags: ["React", "Playground", "WebWorker"],
+    name: "RunTs",
+    iconTecnology: "/svg/react.svg",
+    description:
+      "🎯 A TypeScript playground for running typescript code with: 🎨 Themes, 🔄 Auto-refresh, 🚀 Live execution, 💝 Open Source,🤝 Open to contributions",
+  },
+  {
+    name: "Spooky Histories",
+    link: "https://hackthon-cloudinary.acbc.dev/",
+    github: "https://github.com/acbcdev/hackthon-cloudinary",
+    img: "/img/spooky.webp",
+    tags: ["Nextjs", "Tailwindcss", "Cloudinary"],
+    description:
+      "Interactive AI storyteller that generates dynamic spooky tales from your images. Choose your path, modify images, and craft your own haunting adventure 🎬👻",
+    iconTecnology: "/svg/nextjs.svg",
+  },
+
+  {
+    name: "Trello Clone",
+    github: "https://github.com/acbcdev/trello-clone",
+    link: "https://trello.acbc.dev/",
+    img: "/img/trello.webp",
+    tags: ["Angular", "Tailwindcss"],
+    description:
+      "🔗 Trello Clone with Angular: 🚀 A Feature-Rich Task Management App 📝 with Drag-and-Drop Functionality 🤏 and Local Persistence 💾",
+    iconTecnology: "/svg/angular.svg",
+  },
+  {
+    description:
+      "🔗 Short Link URL Generator: 🚀 Create Compact and Shareable Links Effortlessly ✂️",
+    github: "https://github.com/acbcdev/LinkMinify",
+    link: "https://link.acbc.dev/",
+    img: "/img/link.webp",
+    tags: ["Nextjs", "Tailwindcss", "Mongodb"],
+    name: "LinkMinify",
+    iconTecnology: "/svg/nextjs.svg",
+  },
+  {
+    description:
+      "📊 A Set of Financial Calculators: 🧮 Loan Payments, Investment Growth 📈, Savings Tracking 💰, Budget Planning 📝, ROI Calculation 🚀, and Tax Management 💵 ",
+    github: "https://github.com/acbcdev/SmartMoney",
+    link: "https://smart-money-five.vercel.app/",
+    img: "/img/smart.webp",
+    tags: ["Astro", "SolidJS", "Tailwindcss"],
+    name: "SmartMoney",
+    iconTecnology: "/svg/astro_dark.svg",
+  },
+];
+---
+
+<section>
+  <h2>Proyectos</h2>
+
+  <section class="w-full space-y-28">
+    {
+      projects.map((proyect) => (
+        <article class="border rounded-lg overflow-hidden">
+          <a href={proyect.link} target="_blank">
+            <img
+              src={`https://acbc.dev/${proyect.img}`}
+              class="rounded-lg overflow-hidden aspect-video hover:scale-105 duration-200"
+              alt={proyect.name}
+            />
+          </a>
+          <main class="text-start p-5  ">
+            <div class="flex  justify-between items-center">
+              <h3 class="text-2xl font-bold  py-2">{proyect.name}</h3>
+              <div class="flex justify-center gap-x-2">
+                <GithubSvg class="size-8" />
+              </div>
+            </div>
+            <p>{proyect.description}</p>
+          </main>
+        </article>
+      ))
+    }
+  </section>
+</section>
+
+<style></style>
