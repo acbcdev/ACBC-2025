@@ -1,5 +1,6 @@
 ---
 import Brain from "@/svg/brain.svg";
+import Title from "./Title.astro";
 
 interface skillType {
   src: string;
@@ -24,11 +25,9 @@ export const SkillsICons: skillType[] = [
 ---
 
 <section class="grid gap-10 px-4 md:px-10 mb-10">
-  <h2
-    class="text-xl flex gap-x-2 rounded-full font-mono font-medium mt-10 px-2 uppercase bg-gradient-to-b from-accent border-bg-dark py-1 border w-fit"
-  >
+  <Title>
     <Brain /> Skills
-  </h2>
+  </Title>
 
   <section class="flex flex-wrap gap-2">
     {
