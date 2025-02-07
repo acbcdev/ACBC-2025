@@ -23,7 +23,7 @@ export const SkillsICons: skillType[] = [
 ];
 ---
 
-<section class="grid gap-10 mb-10">
+<section class="grid gap-10 px-4 md:px-10 mb-10">
   <h2
     class="text-xl flex gap-x-2 rounded-full font-mono font-medium mt-10 px-2 uppercase bg-gradient-to-b from-accent border-bg-dark py-1 border w-fit"
   >
@@ -33,8 +33,8 @@ export const SkillsICons: skillType[] = [
   <section class="flex flex-wrap gap-2">
     {
       SkillsICons.map((i) => (
-        <div class="text-xl flex items-center justify-center gap-x-2  px-2  bg-gradient-to-r from-accent border-bg-dark py-1 rounded-lg border w-fit">
-          <img class="size-6" src={`https://acbc.dev/${i.src}`} />
+        <div class="text-base md:text-xl flex items-center justify-center gap-x-2  px-2  bg-gradient-to-r from-accent border-bg-dark py-1 rounded-lg border w-fit">
+          <img class="size-4 md:size-6" src={`https://acbc.dev/${i.src}`} />
           {i.name}
         </div>
       ))
