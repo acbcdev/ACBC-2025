@@ -12,4 +12,7 @@ export default defineConfig({
   experimental: {
     svg: true,
   },
+  devToolbar: {
+    enabled: false,
+  },
 });
