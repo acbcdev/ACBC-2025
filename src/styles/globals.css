@@ -1,6 +1,5 @@
 @import 'tailwindcss';
 
-@plugin 'tailwindcss-animate';
 
 @custom-variant dark (&:is(.dark *));
 
@@ -8,7 +7,7 @@
   --radius-lg: var(--radius);
   --radius-md: calc(var(--radius) - 2px);
   --radius-sm: calc(var(--radius) - 4px);
-
+  --color-bg-dark: #373739;
   --color-background: hsl(var(--background));
   --color-foreground: hsl(var(--foreground));
 
@@ -89,7 +88,11 @@
     --chart-3: 197 37% 24%;
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
-    --radius: 0.5rem
+    --radius: 0.5rem;
+    --detail-high-contrast: rgb(101, 101, 101);
+    --text-high-contrast-rgb-value: 230, 230, 230;
+    --detail-medium-contrast: rgb(25, 25, 25);
+    --text-body: rgb(222, 222, 222);
   }
 
   .dark {
