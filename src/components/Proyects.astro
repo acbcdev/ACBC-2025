@@ -1,97 +1,187 @@
 ---
 import type { ProyectType } from "@/types/Proyect";
-import GithubSvg from "@/svg/github.svg";
+import Proyect from "./Proyect.astro";
+import WWW from "@/svg/www.svg";
+import ChevronRight from "@/svg/chevron-right.svg";
+import ChevronLeft from "@/svg/chevron-left.svg";
+
+import { Button } from "./ui/button";
 
 const projects: ProyectType[] = [
   {
     link: "https://runts.acbc.dev/",
     github: "https://github.com/acbcdev/RunTS",
-    img: "/img/runts.webp",
+    img: "/proyects/runts.png",
     tags: ["React", "Playground", "WebWorker"],
     name: "RunTs",
     iconTecnology: "/svg/react.svg",
     description:
-      "🎯 A TypeScript playground for running typescript code with: 🎨 Themes, 🔄 Auto-refresh, 🚀 Live execution, 💝 Open Source,🤝 Open to contributions",
+      "A TypeScript playground for running typescript code with:  Themes,  Auto-refresh,  Live execution,  Open Source, Open to contributions",
+  },
+  {
+    name: "Trello Clone",
+    github: "https://github.com/acbcdev/trello-clone",
+    link: "https://trello.acbc.dev/",
+    img: "/proyects/trello.png",
+    tags: ["Angular", "Tailwindcss"],
+    description:
+      " Trello Clone with Angular:  A Feature-Rich Task Management App  with Drag-and-Drop Functionality  and Local Persistence ",
+    iconTecnology: "/svg/angular.svg",
   },
   {
     name: "Spooky Histories",
     link: "https://hackthon-cloudinary.acbc.dev/",
     github: "https://github.com/acbcdev/hackthon-cloudinary",
-    img: "/img/spooky.webp",
+    img: "/proyects/spooky.png",
     tags: ["Nextjs", "Tailwindcss", "Cloudinary"],
     description:
-      "Interactive AI storyteller that generates dynamic spooky tales from your images. Choose your path, modify images, and craft your own haunting adventure 🎬👻",
+      "Interactive AI storyteller that generates dynamic spooky tales from your images. Choose your path, modify images, and craft your own haunting adventure ",
     iconTecnology: "/svg/nextjs.svg",
   },
 
   {
-    name: "Trello Clone",
-    github: "https://github.com/acbcdev/trello-clone",
-    link: "https://trello.acbc.dev/",
-    img: "/img/trello.webp",
-    tags: ["Angular", "Tailwindcss"],
     description:
-      "🔗 Trello Clone with Angular: 🚀 A Feature-Rich Task Management App 📝 with Drag-and-Drop Functionality 🤏 and Local Persistence 💾",
-    iconTecnology: "/svg/angular.svg",
-  },
-  {
-    description:
-      "🔗 Short Link URL Generator: 🚀 Create Compact and Shareable Links Effortlessly ✂️",
+      " Short Link URL Generator:  Create Compact and Shareable Links Effortlessly ✂️",
     github: "https://github.com/acbcdev/LinkMinify",
     link: "https://link.acbc.dev/",
-    img: "/img/link.webp",
+    img: "/proyects/link.png",
     tags: ["Nextjs", "Tailwindcss", "Mongodb"],
     name: "LinkMinify",
     iconTecnology: "/svg/nextjs.svg",
   },
   {
+    name: "Query Selector Tool",
+    github: "https://github.com/acbcdev/Dom-Selector-extension",
+    link: "https://chromewebstore.google.com/detail/Query%20Selector%20Tool/hekfcclbnbohbhadpngnnoodkmohgeib",
     description:
-      "📊 A Set of Financial Calculators: 🧮 Loan Payments, Investment Growth 📈, Savings Tracking 💰, Budget Planning 📝, ROI Calculation 🚀, and Tax Management 💵 ",
-    github: "https://github.com/acbcdev/SmartMoney",
-    link: "https://smart-money-five.vercel.app/",
-    img: "/img/smart.webp",
-    tags: ["Astro", "SolidJS", "Tailwindcss"],
-    name: "SmartMoney",
-    iconTecnology: "/svg/astro_dark.svg",
+      " Query Selector Tool:  A Chrome Extension that allows you to easily select DOM elements using CSS selectors ",
+    img: "/proyects/query.png",
+    tags: ["Chrome Extension"],
+    iconTecnology: "/svg/chrome.svg",
   },
 ];
 ---
 
 <section>
-  <h2>Proyectos</h2>
+  <h2
+    class="text-xl flex gap-x-2 font-mono font-medium mb-8 mt-10 px-2 uppercase bg-gradient-to-b from-accent border-[#373739] py-1 rounded-full border w-fit"
+  >
+    <WWW /> Projects
+  </h2>
+  <div class="embla">
+    <div class="embla__viewport px-10 cursor-grab">
+      <section class="embla__container">
+        {
+          projects.map((proyect) => (
+            <Proyect class:list={"emla__slide"} {...proyect} />
+          ))
+        }
+      </section>
+    </div>
+    <div class="embla__controls flex items-center justify-around">
+      <div class="my-2">
+        <button class="embla__button embla__button--prev" type="button">
+          <Button
+            size={"icon"}
+            variant={"outline"}
+            className="embla__prev rounded-full"><ChevronLeft /></Button
+          >
+        </button>
 
-  <section class="w-full space-y-28">
-    {
-      projects.map((proyect) => (
-        <article
-          class={`border  rounded-lg card  overflow-hidden  to-80% backdrop-blur-3xl group/card`}
-        >
-          <a href={proyect.link} target="_blank">
-            <img
-              src={`https://acbc.dev/${proyect.img}`}
-              class="rounded-lg overflow-hidden  "
-              alt={proyect.name}
-            />
-          </a>
-
-          <main class="text-start p-5 group-hover/card:bg-gradient-to-t from-background transition-all duration-500">
-            <div class="flex  justify-between items-center">
-              <h3 class="text-2xl font-bold  py-2">{proyect.name}</h3>
-              <div class="flex justify-center gap-x-2">
-                <GithubSvg class="size-8" />
-              </div>
-            </div>
-            <p>{proyect.description}</p>
-          </main>
-        </article>
-      ))
-    }
-  </section>
+        <button class="embla__button embla__button--next" type="button">
+          <Button
+            size={"icon"}
+            variant={"outline"}
+            className="embla__next  rounded-full"><ChevronRight /></Button
+          >
+        </button>
+        <div class="embla__dots"></div>
+      </div>
+    </div>
+  </div>
 </section>
+<script>
+  import {
+    addDotBtnsAndClickHandlers,
+    addPrevNextBtnsClickHandlers,
+  } from "@/lib/embla";
+  import EmblaCarousel from "embla-carousel";
+
+  const emblaNode = document.querySelector(".embla") as HTMLElement;
+  const viewportNode = emblaNode.querySelector(
+    ".embla__viewport"
+  ) as HTMLElement;
+  if (viewportNode) {
+    // Grab button nodes
+    const prevButtonNode = emblaNode.querySelector(
+      ".embla__prev"
+    ) as HTMLElement;
+    const nextButtonNode = emblaNode.querySelector(
+      ".embla__next"
+    ) as HTMLElement;
+    const dotsNode = document.querySelector(".embla__dots") as HTMLElement;
+    const emblaApi = EmblaCarousel(viewportNode, { align: "start" });
+    const removePrevNextBtnsClickHandlers = addPrevNextBtnsClickHandlers(
+      emblaApi,
+      prevButtonNode,
+      nextButtonNode
+    );
+    const removeDotBtnsAndClickHandlers = addDotBtnsAndClickHandlers(
+      emblaApi,
+      dotsNode
+    );
+    emblaApi.on("destroy", removePrevNextBtnsClickHandlers);
+    emblaApi.on("destroy", removeDotBtnsAndClickHandlers);
+  }
+</script>
 
 <style>
-  .card {
-    display: grid;
-    grid-template-rows: 200px 1fr;
+  .embla {
+    overflow: hidden;
+  }
+
+  .embla__container {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .embla__dots {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-items: center;
+
+    margin-right: calc((2.6rem - 1.4rem) / 2 * -1);
+  }
+  .embla__dot {
+    -webkit-tap-highlight-color: rgba(var(--text-high-contrast-rgb-value), 0.5);
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: transparent;
+    touch-action: manipulation;
+    display: inline-flex;
+    text-decoration: none;
+    cursor: pointer;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    width: 2.6rem;
+    height: 2.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+  }
+  .embla__dot:after {
+    box-shadow: inset 0 0 0 0.2rem var(--detail-medium-contrast);
+    width: 1.4rem;
+    height: 1.4rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    content: "";
+  }
+  .embla__dot--selected:after {
+    box-shadow: inset 0 0 0 0.2rem var(--text-body);
   }
 </style>

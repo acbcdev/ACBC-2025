@@ -1,0 +1,45 @@
+---
+import GithubSvg from "@/svg/github.svg";
+import LinkSvg from "@/svg/link.svg";
+
+type Props = {
+  link: string;
+  img: string;
+  name: string;
+  description: string;
+  github: string;
+};
+
+const { link, img, name, description, github } = Astro.props;
+---
+
+<article
+  class="border embla__slide rounded-lg card backdrop-blur-sm overflow-hidden group/card"
+>
+  <a href={link} target="_blank">
+    <img src={img} class="overflow-hidden" alt={name} />
+  </a>
+
+  <main
+    class="text-start px-3 before:bg-radial before:from-primary/10 py-2 h-full duration-200"
+  >
+    <div class="flex justify-between items-center">
+      <h3 class="text-2xl font-bold py-2">{name}</h3>
+      <div class="flex justify-center gap-x-2">
+        <a href={github} target="_blank">
+          <GithubSvg class="size-4" />
+        </a>
+        <a href={link}>
+          <LinkSvg class="size-5" />
+        </a>
+      </div>
+    </div>
+    <p class="text-primary/70">{description}</p>
+  </main>
+</article>
+<style>
+  .embla__slide {
+    flex: 0 0 100%;
+    min-width: 0;
+  }
+</style>

@@ -1,0 +1,42 @@
+---
+import Brain from "@/svg/brain.svg";
+interface skillType {
+  src: string;
+  name: string;
+}
+export const SkillsICons: skillType[] = [
+  { src: "/svg/file-type-html.svg", name: "HTML" },
+  { src: "/svg/css.svg", name: "CSS" },
+  { src: "/svg/javascript-js.svg", name: "Javascript" },
+  { src: "/svg/tailwind-css.svg", name: "Tailwindcss" },
+  { src: "/svg/react.svg", name: "React" },
+  { src: "/svg/nextjs.svg", name: "Next.js" },
+  { src: "/svg/typescript-icon.svg", name: "Typescript" },
+  { src: "/svg/astro_dark.svg", name: "Astro.js" },
+  { src: "/svg/solidjs.svg", name: "Solid.js" },
+  { src: "/svg/bash_dark.svg", name: "Bash" },
+  {
+    name: "Angular",
+    src: "/svg/angular.svg",
+  },
+];
+---
+
+<section class="grid gap-10 mb-10">
+  <h2
+    class="text-xl flex gap-x-2 rounded-full font-mono font-medium mt-10 px-2 uppercase bg-gradient-to-b from-accent border-bg-dark py-1 border w-fit"
+  >
+    <Brain /> Skills
+  </h2>
+
+  <section class="flex flex-wrap gap-2">
+    {
+      SkillsICons.map((i) => (
+        <div class="text-xl flex items-center justify-center gap-x-2  px-2  bg-gradient-to-r from-accent border-bg-dark py-1 rounded-lg border w-fit">
+          <img class="size-6" src={`https://acbc.dev/${i.src}`} />
+          {i.name}
+        </div>
+      ))
+    }
+  </section>
+</section>
