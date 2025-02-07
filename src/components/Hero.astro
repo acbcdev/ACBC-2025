@@ -26,14 +26,14 @@ import LinkedinSvg from "@/svg/linkedin.svg";
   </section>
 
   <footer class="flex gap-x-2">
-    <Button className="btn hover:scale-110 transition-all">
+    <Button className="btn">
       <a
         href="https://www.linkedin.com/in/acbc-dev/"
         class="inline-flex gap-x-1"
         >Linkedin <LinkedinSvg class="fill-white" /><a> </a>
       </a>
     </Button>
-    <Button className="btn hover:scale-110 transition-all">
+    <Button className="btn">
       <a class="inline-flex gap-x-1" href="https://github.com/acbcdev"
         >GitHub <GithubSvg /></a
       >
@@ -43,18 +43,23 @@ import LinkedinSvg from "@/svg/linkedin.svg";
 
 <style>
   .btn {
-    /* @apply bg-background border text-foreground; */
+    --primary: #2d2154;
     background-color: var(--background);
     color: var(--foreground);
+
     background: radial-gradient(
-      100% 100% at 50% 100%,
-      rgba(130, 71, 229, 0.2) 0%,
-      rgba(49, 38, 89, 0.2) 50%
+      100% 100% at 50% 70%,
+      var(--primary) 0%,
+      transparent 70%
     );
-    box-shadow:
-      0 0 20px rgba(54, 53, 56, 0.15),
-      inset 0 0 20px rgba(130, 71, 229, 0.05);
+    transition-duration: 200ms;
+    border: 1px solid rgba(58, 57, 59, 0.1);
     border: 1px solid rgba(58, 57, 59, 0.1);
     backdrop-filter: blur(60px);
+    &:hover {
+      box-shadow:
+        0 0 20px rgba(54, 53, 56, 0.15),
+        inset 0 0 20px rgba(130, 71, 229, 0.05);
+    }
   }
 </style>
