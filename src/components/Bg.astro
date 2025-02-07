@@ -1,14 +1,15 @@
-<div class="grid"><slot /></div>
+<div class="grids grid place-content-center"><slot /></div>
 <style>
-  .grid {
+  .grids {
     position: relative;
+    overflow: visible;
+
     &::after {
       content: "";
       position: absolute;
       z-index: -5;
-      width: 200%;
-      height: 125%;
-      top: -50%;
+      width: 150%;
+      height: 100%;
       left: -50%;
       border-radius: 50%;
       background-image: linear-gradient(
