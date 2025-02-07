@@ -62,19 +62,17 @@ const projects: ProyectType[] = [
 ];
 ---
 
-<section class="space-y-6 mb-10">
+<section class="space-y-6 mb-10 px-4 md:px-10 grid place-content-center">
   <h2
-    class="text-xl flex gap-x-2 font-mono font-medium px-2 uppercase bg-gradient-to-b from-accent border-[#373739] py-1 rounded-full border w-fit"
+    class="text-md md:text-xl flex gap-x-2 font-mono font-medium px-2 uppercase bg-gradient-to-b from-accent border-[#373739] py-1 rounded-full border w-fit"
   >
     <WWW /> Projects
   </h2>
-  <div class="">
-    <section class="grid gap-x-2 gap-y-3 grid-cols-2">
-      {
-        projects.map((proyect) => (
-          <Proyect class:list={"emla__slide"} {...proyect} />
-        ))
-      }
-    </section>
-  </div>
+  <section class="grid gap-x-3 gap-y-4 grid-cols-2">
+    {
+      projects.map((proyect) => (
+        <Proyect class:list={"emla__slide"} {...proyect} />
+      ))
+    }
+  </section>
 </section>
