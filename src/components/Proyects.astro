@@ -62,126 +62,19 @@ const projects: ProyectType[] = [
 ];
 ---
 
-<section>
+<section class="space-y-6 mb-10">
   <h2
-    class="text-xl flex gap-x-2 font-mono font-medium mb-8 mt-10 px-2 uppercase bg-gradient-to-b from-accent border-[#373739] py-1 rounded-full border w-fit"
+    class="text-xl flex gap-x-2 font-mono font-medium px-2 uppercase bg-gradient-to-b from-accent border-[#373739] py-1 rounded-full border w-fit"
   >
     <WWW /> Projects
   </h2>
-  <div class="embla">
-    <div class="embla__viewport px-10 cursor-grab">
-      <section class="embla__container">
-        {
-          projects.map((proyect) => (
-            <Proyect class:list={"emla__slide"} {...proyect} />
-          ))
-        }
-      </section>
-    </div>
-    <div class="embla__controls flex items-center justify-around">
-      <div class="my-2">
-        <button class="embla__button embla__button--prev" type="button">
-          <Button
-            size={"icon"}
-            variant={"outline"}
-            className="embla__prev rounded-full"><ChevronLeft /></Button
-          >
-        </button>
-
-        <button class="embla__button embla__button--next" type="button">
-          <Button
-            size={"icon"}
-            variant={"outline"}
-            className="embla__next  rounded-full"><ChevronRight /></Button
-          >
-        </button>
-        <div class="embla__dots"></div>
-      </div>
-    </div>
+  <div class="">
+    <section class="grid gap-x-2 gap-y-3 grid-cols-2">
+      {
+        projects.map((proyect) => (
+          <Proyect class:list={"emla__slide"} {...proyect} />
+        ))
+      }
+    </section>
   </div>
 </section>
-<script>
-  import {
-    addDotBtnsAndClickHandlers,
-    addPrevNextBtnsClickHandlers,
-  } from "@/lib/embla";
-  import EmblaCarousel from "embla-carousel";
-
-  const emblaNode = document.querySelector(".embla") as HTMLElement;
-  const viewportNode = emblaNode.querySelector(
-    ".embla__viewport"
-  ) as HTMLElement;
-  if (viewportNode) {
-    // Grab button nodes
-    const prevButtonNode = emblaNode.querySelector(
-      ".embla__prev"
-    ) as HTMLElement;
-    const nextButtonNode = emblaNode.querySelector(
-      ".embla__next"
-    ) as HTMLElement;
-    const dotsNode = document.querySelector(".embla__dots") as HTMLElement;
-    const emblaApi = EmblaCarousel(viewportNode, { align: "start" });
-    const removePrevNextBtnsClickHandlers = addPrevNextBtnsClickHandlers(
-      emblaApi,
-      prevButtonNode,
-      nextButtonNode
-    );
-    const removeDotBtnsAndClickHandlers = addDotBtnsAndClickHandlers(
-      emblaApi,
-      dotsNode
-    );
-    emblaApi.on("destroy", removePrevNextBtnsClickHandlers);
-    emblaApi.on("destroy", removeDotBtnsAndClickHandlers);
-  }
-</script>
-
-<style>
-  .embla {
-    overflow: hidden;
-  }
-
-  .embla__container {
-    display: flex;
-    gap: 1rem;
-  }
-
-  .embla__dots {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-end;
-    align-items: center;
-
-    margin-right: calc((2.6rem - 1.4rem) / 2 * -1);
-  }
-  .embla__dot {
-    -webkit-tap-highlight-color: rgba(var(--text-high-contrast-rgb-value), 0.5);
-    -webkit-appearance: none;
-    appearance: none;
-    background-color: transparent;
-    touch-action: manipulation;
-    display: inline-flex;
-    text-decoration: none;
-    cursor: pointer;
-    border: 0;
-    padding: 0;
-    margin: 0;
-    width: 2.6rem;
-    height: 2.6rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-  }
-  .embla__dot:after {
-    box-shadow: inset 0 0 0 0.2rem var(--detail-medium-contrast);
-    width: 1.4rem;
-    height: 1.4rem;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    content: "";
-  }
-  .embla__dot--selected:after {
-    box-shadow: inset 0 0 0 0.2rem var(--text-body);
-  }
-</style>
