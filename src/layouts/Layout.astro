@@ -1,4 +1,5 @@
 ---
+import Bg from "@/components/Bg.astro";
 import "@/styles/globals.css";
 ---
 
@@ -11,19 +12,31 @@ import "@/styles/globals.css";
     <title>Astro Basics</title>
   </head>
   <body class="dark">
-    <slot />
+    <div class="grid place-content-center">
+      <slot />
+    </div>
   </body>
 </html>
 
 <style is:global>
+  :root {
+    color-scheme: dark;
+  }
   html,
   body {
-    background-color: #020308;
-    width: 65ch;
+    max-width: 80ch;
+    font-family:
+      system-ui,
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      Roboto,
+      Oxygen,
+      Ubuntu,
+      Cantarell,
+      "Open Sans",
+      "Helvetica Neue",
+      sans-serif;
     margin-inline: auto;
-    gap: 5rem 0;
-    display: grid;
-    justify-content: center;
-    align-items: center;
   }
 </style>
