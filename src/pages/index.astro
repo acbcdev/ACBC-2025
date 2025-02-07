@@ -2,23 +2,18 @@
 import Layout from "@/layouts/Layout.astro";
 import Bg from "@/components/Bg.astro";
 import Hero from "@/components/Hero.astro";
-import Proyects from "@/components/Proyects.astro";
+import Proyects from "@/components/Proyects/Proyects.astro";
 import Skills from "@/components/Skills.astro";
 import Footer from "@/components/Footer.astro";
 ---
 
-<Layout>
-  <!-- <main class="mx-auto space-y-6 max-w-prose w-full"> -->
+<Layout
+  title="Camilo Blandon | Frontend Developer - Portfolio"
+  description="Descubre el portafolio de Camilo Blandon, Frontend Developer con experiencia en desarrollo web y aplicaciones modernas."
+>
   <Bg>
     <Hero />
     <Proyects />
   </Bg>
   <Skills />
-  <!-- </main> -->
-
-  <!-- <Bg>
-    <Footer />
-  </Bg> -->
 </Layout>
-
-<!-- <style></style> -->

@@ -1,6 +1,14 @@
 ---
 import Bg from "@/components/Bg.astro";
+import SEO from "@/components/SEO.astro";
 import "@/styles/globals.css";
+type Props = {
+  title: string;
+  description: string;
+  image?: string;
+  canonical?: string;
+};
+const { title, description, image = "/img/og.webp", canonical } = Astro.props;
 ---
 
 <!doctype html>
@@ -9,7 +17,12 @@ import "@/styles/globals.css";
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <title>Astro Basics</title>
+    <SEO
+      title={title}
+      description={description}
+      image={image}
+      canonical={canonical}
+    />
   </head>
   <body class="w-[100%] md:w-[60%] mx-auto grid place-content-center">
     <slot />
