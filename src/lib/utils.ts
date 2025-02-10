@@ -5,10 +5,14 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-export function $<T extends Element>(selector: string): T | null {
-  return (document.querySelector(selector) as T) || null;
+export function $<T extends Element>(
+  selector: string,
+  context: Document | HTMLElement = document,
+): T | null {
+  return context.querySelector<T>(selector);
 }
 
-export function $$<T extends Element>(selector: string): NodeListOf<T> {
-  return document.querySelectorAll(selector) as NodeListOf<T>;
-}
+export const $$ = <T extends Element>(
+  selector: string,
+  context: Document | HTMLElement = document,
+) => context.querySelectorAll<T>(selector);
