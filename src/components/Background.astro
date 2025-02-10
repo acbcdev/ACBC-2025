@@ -1,0 +1,86 @@
+<!-- <div class="grids grid place-content-center"><slot /></div>
+<style>
+  .grids {
+    position: relative;
+    overflow: visible;
+
+    &::after {
+      content: "";
+      position: absolute;
+      z-index: -5;
+      width: 150%;
+      height: 100%;
+      left: -50%;
+      border-radius: 50%;
+      opacity: 0.4;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.09) 1px, transparent 1px);
+      background-size: 40px 40px;
+      mask-image: radial-gradient(
+        circle at 50% 50%,
+        black 20%,
+        transparent 80%
+      );
+      pointer-events: none;
+    }
+  }
+</style> -->
+<canvas id="backgroundCanvas" class="fixed inset-0 -z-10"></canvas>
+<slot />
+<script>
+  const canvas = document.getElementById(
+    "backgroundCanvas"
+  ) as HTMLCanvasElement;
+  const ctx = canvas.getContext("2d");
+
+  function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+
+  function drawBackground() {
+    if (!ctx) return;
+
+    // Fondo oscuro
+    ctx.fillStyle = "#121212"; // Un gris muy oscuro
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    // Efecto de luz en la parte superior
+    const gradient = ctx.createRadialGradient(
+      canvas.width / 2,
+      0,
+      0,
+      canvas.width / 2,
+      0,
+      canvas.height
+    );
+    gradient.addColorStop(0, "rgba(255, 255, 255, 0.15)"); // Luz sutil
+    gradient.addColorStop(1, "rgba(255, 255, 255, 0)"); // Transparente
+
+    ctx.fillStyle = gradient;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    // Añadir un sutil patrón de puntos
+    ctx.fillStyle = "rgba(255, 255, 255, 0.03)"; // Puntos muy sutiles
+    for (let x = 0; x < canvas.width; x += 20) {
+      for (let y = 0; y < canvas.height; y += 20) {
+        ctx.beginPath();
+        ctx.arc(x, y, 1, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+  }
+
+  function init() {
+    resizeCanvas();
+    drawBackground();
+
+    window.addEventListener("resize", () => {
+      resizeCanvas();
+      drawBackground();
+    });
+  }
+
+  init();
+</script>
