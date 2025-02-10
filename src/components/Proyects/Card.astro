@@ -1,7 +1,6 @@
 ---
 import GithubSvg from "@/svg/github.svg";
 import LinkSvg from "@/svg/link.svg";
-import { Image } from "astro:assets";
 
 type Props = {
   link: string;
@@ -15,23 +14,30 @@ const { link, img, name, description, github } = Astro.props;
 ---
 
 <article
-  class="border-2 rounded-lg border-border card backdrop-blur-3xl overflow-hidden group/card"
+  class="border-2 card rounded-lg border-border backdrop-blur-3xl overflow-hidden group/card"
 >
-  <a href={link} target="_blank">
+  <a href={link} target="_blank" draggable="false">
     <img
       src={img}
       alt={`${name} mockup image`}
-      class="overflow-hidden duration-200 z-50"
+      class="overflow-hidden duration-200 aspect-video z-50"
       alt={name}
+      draggable="false"
     />
   </a>
 
   <main
     class="text-start px-3 relative before:-z-10 before:absolute before:inset-0 before:bg-radial-[at_50%_75%] before:from-zinc-100 before:opacity-20 py-2 h-full duration-200"
   >
-    <div class="flex justify-between items-center">
-      <h3 class="text-lg md:text-xl xl:text-2xl font-bold py-2">{name}</h3>
-      <div class="flex justify-center gap-x-2">
+    <div
+      class="flex flex-col md:flex-row justify-around md:justify-between items-center"
+    >
+      <h3
+        class="text-lg line-clamp-1 md:line-clamp-none md:text-xl xl:text-2xl font-bold py-2"
+      >
+        {name}
+      </h3>
+      <div class="flex md:justify-center gap-x-2">
         <a
           href={github}
           class="hover:opacity-100 opacity-80"
@@ -50,16 +56,25 @@ const { link, img, name, description, github } = Astro.props;
         </a>
       </div>
     </div>
-    <p class="text-primary/70 text-xs md:text-base">{description}</p>
+    <p class="text-primary/70 text-xs mt-2 md:mt-1 line-clamp-4 md:text-base">
+      {description}
+    </p>
   </main>
 </article>
 
 <style>
   .card {
+    scroll-snap-align: center;
+    flex: 0 0 85%;
+  }
+  @media (max-width: 480px) {
+    .card {
+      flex: 0 0 100%;
+    }
   }
   .card-spotlight {
-    position: relative;
-    overflow: hidden;
+    /* position: relative; */
+    /* overflow: hidden; */
     --mouse-x: 50%;
     --mouse-y: 50%;
     --spotlight-color: rgba(255, 255, 255, 0.05);
