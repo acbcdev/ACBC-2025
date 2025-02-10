@@ -25,19 +25,26 @@ import { Button } from "../ui/button";
       }
     </div>
     <div>
-      <Button id="prev" className="rounded-full" size={"icon"}
-        ><ChevronLeft /></Button
+      <Button
+        id="prev"
+        variant={"secondary"}
+        disabled
+        className="rounded-full"
+        size={"icon"}><ChevronLeft /></Button
       >
 
-      <Button id="next" className="rounded-full" size={"icon"}
-        ><ChevronRight /></Button
+      <Button
+        id="next"
+        variant={"secondary"}
+        className="rounded-full"
+        size={"icon"}><ChevronRight /></Button
       >
     </div>
   </section>
   <script>
     import { $, $$ } from "@/lib/utils";
     const container = $("container");
-    const cards = $$(".card");
+    const cards = $$<HTMLElement>(".card");
     const dots = $$(".dot");
     const prev = $<HTMLButtonElement>("#prev");
     const next = $<HTMLButtonElement>("#next");
@@ -47,7 +54,9 @@ import { Button } from "../ui/button";
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            const newIndex = Array.from(cards).indexOf(entry.target);
+            const newIndex = Array.from(cards).indexOf(
+              entry.target as HTMLElement
+            );
             if (newIndex !== currentIndex) {
               dots[currentIndex].classList.remove("active");
               dots[newIndex].classList.add("active");
@@ -73,8 +82,8 @@ import { Button } from "../ui/button";
       if (index >= 0 && index < cards.length) {
         cards[index].scrollIntoView({
           behavior: "smooth",
+          block: "nearest",
           inline: "center",
-          block: "center",
         });
       }
     }
@@ -122,10 +131,8 @@ import { Button } from "../ui/button";
       view-timeline-axis: inline;
       animation: linear fadeIn both;
       animation-timeline: --scroll;
-      animation-range: entry 20% cover 120%;
-      display: inline-flex;
-      flex-direction: column;
-      justify-content: center; */
+      animation-range: entry 20% cover 120%; */
+
       animation: fadeIn linear both;
       animation-timeline: view(x);
       animation-range: entry 20% cover 40%;
@@ -151,7 +158,7 @@ import { Button } from "../ui/button";
     100% {
       opacity: 0;
       scale: 0.5;
-      filter: blur(4px);
+      filter: blur(10px);
     }
     50% {
       opacity: 1;
@@ -170,16 +177,17 @@ import { Button } from "../ui/button";
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.5);
+    background: hsl(var(--secondary));
     transition: 0.3s;
     &:hover {
       cursor: pointer;
-      background: white;
+      opacity: 0.9;
+      background: hsl(var(--primary));
     }
   }
 
   .dot.active {
-    background: white;
-    transform: scale(1.2);
+    background: hsl(var(--primary));
+    transform: scale(1.3);
   }
 </style>
