@@ -5,5 +5,6 @@ export type ProyectType = {
   name: string;
   tags: string[];
   description: string;
-  iconTecnology: string;
+  iconTecnology?: string;
+  favicon?: string;
 };
