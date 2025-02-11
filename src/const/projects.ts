@@ -4,10 +4,11 @@ export const projects: ProyectType[] = [
   {
     link: "https://runts.acbc.dev/",
     github: "https://github.com/acbcdev/RunTS",
-    img: "/proyects/runts.png",
+    img: "/proyects/runts.webp",
     tags: ["React", "Playground", "WebWorker"],
     name: "RunTs",
     iconTecnology: "/svg/react.svg",
+    favicon: "https://runts.acbc.dev/logo.svg",
     description:
       "A TypeScript playground for running typescript code with:  Themes,  Auto-refresh,  Live execution,  Open Source, Open to contributions",
   },
@@ -15,7 +16,7 @@ export const projects: ProyectType[] = [
     name: "Trello Clone",
     github: "https://github.com/acbcdev/trello-clone",
     link: "https://trello.acbc.dev/",
-    img: "/proyects/trello.png",
+    img: "/proyects/trello.webp",
     tags: ["Angular", "Tailwindcss"],
     description:
       " Trello Clone with Angular:  A Feature-Rich Task Management App  with Drag-and-Drop Functionality  and Local Persistence ",
@@ -25,7 +26,8 @@ export const projects: ProyectType[] = [
     name: "Spooky Histories",
     link: "https://hackthon-cloudinary.acbc.dev/",
     github: "https://github.com/acbcdev/hackthon-cloudinary",
-    img: "/proyects/spooky.png",
+    img: "/proyects/spooky.webp",
+    favicon: "https://hackthon-cloudinary.acbc.dev/icon.svg",
     tags: ["Nextjs", "Tailwindcss", "Cloudinary"],
     description:
       "Interactive AI storyteller that generates dynamic spooky tales from your images. Choose your path, modify images, and craft your own haunting adventure ",
@@ -37,7 +39,7 @@ export const projects: ProyectType[] = [
       " Short Link URL Generator:  Create Compact and Shareable Links Effortlessly ✂️",
     github: "https://github.com/acbcdev/LinkMinify",
     link: "https://link.acbc.dev/",
-    img: "/proyects/link.png",
+    img: "/proyects/link.webp",
     tags: ["Nextjs", "Tailwindcss", "Mongodb"],
     name: "LinkMinify",
     iconTecnology: "/svg/nextjs.svg",
@@ -48,7 +50,7 @@ export const projects: ProyectType[] = [
     link: "https://chromewebstore.google.com/detail/Query%20Selector%20Tool/hekfcclbnbohbhadpngnnoodkmohgeib",
     description:
       " Query Selector Tool:  A Chrome Extension that allows you to easily select DOM elements using CSS selectors ",
-    img: "/proyects/query.png",
+    img: "/proyects/query.webp",
     tags: ["Chrome Extension"],
     iconTecnology: "/svg/chrome.svg",
   },

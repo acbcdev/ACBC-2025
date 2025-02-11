@@ -1,6 +1,7 @@
 ---
 import GithubSvg from "@/svg/github.svg";
 import LinkSvg from "@/svg/link.svg";
+import Image from "astro/components/Image.astro";
 
 type Props = {
   link: string;
@@ -8,19 +9,22 @@ type Props = {
   name: string;
   description: string;
   github: string;
+  favicon?: string;
 };
 
-const { link, img, name, description, github } = Astro.props;
+const { link, img, name, description, github, favicon } = Astro.props;
 ---
 
 <article
   class="card rounded-lg border-border backdrop-blur-3xl overflow-hidden group/card"
 >
   <a href={link} target="_blank" draggable="false">
-    <img
+    <Image
+      width={600}
+      height={330}
       src={img}
       alt={`${name} mockup image`}
-      class="overflow-hidden duration-200 aspect-video z-50"
+      class="overflow-hidden w-full duration-200 aspect-video z-50"
       alt={name}
       draggable="false"
     />
@@ -32,11 +36,19 @@ const { link, img, name, description, github } = Astro.props;
     <div
       class="flex flex-col md:flex-row justify-around md:justify-between items-center"
     >
-      <h3
-        class="text-lg line-clamp-1 md:line-clamp-none md:text-xl xl:text-2xl font-bold py-2"
-      >
-        {name}
-      </h3>
+      <div class="flex gap-x-2 items-center justify-center">
+        {
+          favicon && (
+            <img src={favicon} class="size-8" alt={`${link} favicon`} />
+          )
+        }
+        <h3
+          class="text-lg line-clamp-1 md:line-clamp-none md:text-xl xl:text-2xl font-bold py-2"
+        >
+          {name}
+        </h3>
+      </div>
+
       <div class="flex md:justify-center gap-x-2">
         <a
           href={github}
@@ -65,12 +77,6 @@ const { link, img, name, description, github } = Astro.props;
 <style>
   .card {
     scroll-snap-align: center;
-    flex: 0 0 85%;
-  }
-
-  @media (max-width: 480px) {
-    .card {
-      flex: 0 0 100%;
-    }
+    flex: 0 0 100%;
   }
 </style>
