@@ -30,7 +30,7 @@
 <slot />
 <script>
   const canvas = document.getElementById(
-    "backgroundCanvas"
+    "backgroundCanvas",
   ) as HTMLCanvasElement;
   const ctx = canvas.getContext("2d");
 
@@ -53,7 +53,7 @@
       0,
       canvas.width / 2,
       0,
-      canvas.height
+      canvas.height,
     );
     gradient.addColorStop(0, "rgba(255, 255, 255, 0.15)"); // Luz sutil
     gradient.addColorStop(1, "rgba(255, 255, 255, 0)"); // Transparente
