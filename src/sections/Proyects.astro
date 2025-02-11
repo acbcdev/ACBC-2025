@@ -1,0 +1,194 @@
+---
+import Card from "@/components/Card.astro";
+import WWW from "@/svg/www.svg";
+import { projects } from "@/const/projects";
+import Title from "@/components/Title.astro";
+import ChevronRight from "@/svg/chevron-right.svg";
+import ChevronLeft from "@/svg/chevron-left.svg";
+import { Button } from "@/components/ui/button";
+---
+
+<section class="space-y-4 mb-10 px-4 md:px-10 grid place-content-center">
+  <Title>
+    <WWW /> Projects
+  </Title>
+
+  <section class="container" id="container">
+    {projects.map((proyect) => <Card {...proyect} />)}
+  </section>
+  <section class="flex justify-around items-center gap-x-2">
+    <div class="dots">
+      {
+        projects.map((_, index) => (
+          <div class={`dot ${index === 0 ? "active" : ""}`} />
+        ))
+      }
+    </div>
+    <div class="hidden md:block">
+      <Button
+        id="prev"
+        variant={"secondary"}
+        disabled
+        className="rounded-full"
+        size={"icon"}><ChevronLeft /></Button
+      >
+
+      <Button
+        id="next"
+        variant={"secondary"}
+        className="rounded-full"
+        size={"icon"}><ChevronRight /></Button
+      >
+    </div>
+  </section>
+  <script>
+    import { $, $$ } from "@/lib/utils";
+    const container = $("container");
+    const cards = $$<HTMLElement>(".card");
+    const dots = $$(".dot");
+    const prev = $<HTMLButtonElement>("#prev");
+    const next = $<HTMLButtonElement>("#next");
+    let currentIndex = 0;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const newIndex = Array.from(cards).indexOf(
+              entry.target as HTMLElement,
+            );
+            if (newIndex !== currentIndex) {
+              dots[currentIndex].classList.remove("active");
+              dots[newIndex].classList.add("active");
+              currentIndex = newIndex;
+              disableBtns();
+            }
+          }
+        });
+      },
+      {
+        root: container,
+        threshold: 0.5,
+      },
+    );
+
+    cards.forEach((card) => observer.observe(card));
+    dots.forEach((dot, i) =>
+      dot.addEventListener("click", () => {
+        scrollToSection(i);
+      }),
+    );
+    function scrollToSection(index: number) {
+      if (index >= 0 && index < cards.length) {
+        cards[index].scrollIntoView({
+          behavior: "smooth",
+          block: "nearest",
+          inline: "center",
+        });
+      }
+    }
+
+    function scrollNext() {
+      scrollToSection(currentIndex + 1);
+    }
+
+    function scrollPrev() {
+      scrollToSection(currentIndex - 1);
+    }
+    function disableBtns() {
+      if (currentIndex === 0 && prev) {
+        prev.disabled = true;
+        return;
+      }
+      if (currentIndex === cards.length - 1 && next) {
+        next.disabled = true;
+        return;
+      }
+      if (prev && next) {
+        prev.disabled = false;
+        next.disabled = false;
+      }
+    }
+    container?.addEventListener("scroll", disableBtns);
+    prev?.addEventListener("click", scrollPrev);
+    next?.addEventListener("click", scrollNext);
+  </script>
+</section>
+
+<style>
+  .container {
+    max-width: 100%;
+    animation-timeline:;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    display: flex;
+    gap: 1.5rem;
+    padding-block: 1rem;
+    scrollbar-width: none;
+    .card {
+      /* view-timeline-name: --scroll;
+      view-timeline-axis: inline;
+      animation: linear fadeIn both;
+      animation-timeline: --scroll;
+      animation-range: entry 20% cover 120%;
+      display: inline-flex;
+      flex-direction: column;
+      justify-items: center; */
+      animation: fadeIn linear both;
+      animation-timeline: view(x);
+      animation-range: entry 0% cover 40%;
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0.8;
+      scale: 0.5;
+      filter: blur(4px);
+    }
+    80% {
+      filter: blur(0);
+    }
+    to {
+      opacity: 1;
+      scale: 1;
+    }
+  }
+  /* @keyframes fadeIn {
+    0%,
+    100% {
+      opacity: 0;
+      scale: 0.5;
+      filter: blur(10px);
+    }
+    33% {
+      opacity: 1;
+      scale: 1;
+      filter: blur(0);
+    }
+  } */
+  .dots {
+    bottom: 60px;
+    left: 50%;
+    display: flex;
+    gap: 8px;
+  }
+
+  .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: hsl(var(--secondary));
+    transition: 0.3s;
+    &:hover {
+      cursor: pointer;
+      opacity: 0.9;
+      background: hsl(var(--primary));
+    }
+  }
+
+  .dot.active {
+    background: hsl(var(--primary));
+    transform: scale(1.3);
+  }
+</style>
