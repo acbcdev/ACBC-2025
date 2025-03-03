@@ -55,7 +55,7 @@ import { Button } from "@/components/ui/button";
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             const newIndex = Array.from(cards).indexOf(
-              entry.target as HTMLElement
+              entry.target as HTMLElement,
             );
             if (newIndex !== currentIndex) {
               dots[currentIndex].classList.remove("active");
@@ -69,14 +69,14 @@ import { Button } from "@/components/ui/button";
       {
         root: container,
         threshold: 0.5,
-      }
+      },
     );
 
     cards.forEach((card) => observer.observe(card));
     dots.forEach((dot, i) =>
       dot.addEventListener("click", () => {
         scrollToSection(i);
-      })
+      }),
     );
     function scrollToSection(index: number) {
       if (index >= 0 && index < cards.length) {
