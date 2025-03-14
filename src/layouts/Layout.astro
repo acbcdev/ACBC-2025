@@ -1,4 +1,5 @@
 ---
+import Analytics from "@vercel/analytics/astro";
 import SEO from "@/components/SEO.astro";
 import "@/styles/globals.css";
 type Props = {
@@ -27,6 +28,7 @@ const { title, description, image = "/og.jpg", canonical } = Astro.props;
     <div class="w-[100%] md:w-[55%] mx-auto grid place-content-center">
       <slot />
     </div>
+    <Analytics />
   </body>
 </html>
 
