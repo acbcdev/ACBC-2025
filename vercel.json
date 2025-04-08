@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/2024/",
+      "destination": "https://2024.acbc.dev"
+    }
+  ]
+}
