@@ -1,0 +1,23 @@
+---
+import Background from "@/components/Background.astro";
+import { Button } from "@/components/ui/button";
+import Layout from "@/layouts/Layout.astro";
+---
+
+<Layout
+  title="404 - Page Not Found"
+  description="The page you are looking for does not exist."
+>
+  <Background>
+    <main class="h-screen w-full grid place-items-center">
+      <div class="space-y-5">
+        <h1 class="text-4xl">
+          <span class="font-bold">404</span> - Page Not Found
+        </h1>
+        <a href="/" class="inline-block">
+          <Button>Go Home</Button>
+        </a>
+      </div>
+    </main>
+  </Background>
+</Layout>
