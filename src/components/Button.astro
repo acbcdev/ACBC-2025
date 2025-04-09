@@ -1,0 +1,32 @@
+---
+import type { HTMLAttributes } from "astro/types";
+type Props = HTMLAttributes<"button">;
+---
+
+<button
+  {...Astro.props}
+  class="inline-flex items-center cursor-pointer justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 h-9 px-4 py-2"
+>
+  <slot />
+</button>
+
+<style>
+  button {
+    --primary: #2d2154;
+    background-color: var(--background);
+    color: var(--foreground);
+    background: radial-gradient(
+      100% 100% at 50% 70%,
+      var(--primary) 0%,
+      transparent 85%
+    );
+    transition-duration: 200ms;
+    border: 1px solid rgba(58, 57, 59, 0.1);
+    border: 1px solid rgba(58, 57, 59, 0.1);
+    backdrop-filter: blur(60px);
+
+    &:hover {
+      scale: 1.1;
+    }
+  }
+</style>
