@@ -1,32 +1,5 @@
-<!-- <div class="grids grid place-content-center"><slot /></div>
-<style>
-  .grids {
-    position: relative;
-    overflow: visible;
-
-    &::after {
-      content: "";
-      position: absolute;
-      z-index: -5;
-      width: 150%;
-      height: 100%;
-      left: -50%;
-      border-radius: 50%;
-      opacity: 0.4;
-      background-image:
-        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.09) 1px, transparent 1px);
-      background-size: 40px 40px;
-      mask-image: radial-gradient(
-        circle at 50% 50%,
-        black 20%,
-        transparent 80%
-      );
-      pointer-events: none;
-    }
-  }
-</style> -->
 <canvas id="backgroundCanvas" class="fixed inset-0 -z-10"> </canvas>
+
 <slot />
 <script>
   const canvas = document.getElementById(
@@ -34,16 +7,40 @@
   ) as HTMLCanvasElement;
   const ctx = canvas.getContext("2d");
 
+  // Configuración de puntos
+  const dots: Dot[] = [];
+  const numberOfDots = 250;
+
+  interface Dot {
+    x: number;
+    y: number;
+    size: number;
+    opacity: number;
+  }
+
+  function createDot(): Dot {
+    return {
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      size: Math.random() * 1.5 + 0.5, // Tamaño entre 0.5 y 2 píxeles
+      opacity: Math.random() * 0.3 + 0.05, // Opacidad entre 0.05 y 0.3
+    };
+  }
+
   function resizeCanvas() {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
+    drawBackground(); // Redibujar cuando cambie el tamaño
   }
 
   function drawBackground() {
     if (!ctx) return;
 
+    // Limpiar canvas
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
     // Fondo oscuro
-    ctx.fillStyle = "#121212"; // Un gris muy oscuro
+    ctx.fillStyle = "#121212";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     // Efecto de luz en la parte superior
@@ -55,46 +52,37 @@
       0,
       canvas.height,
     );
-    gradient.addColorStop(0, "rgba(255, 255, 255, 0.15)"); // Luz sutil
-    gradient.addColorStop(1, "rgba(255, 255, 255, 0)"); // Transparente
+
+    gradient.addColorStop(0, "rgba(255, 255, 255, 0.15)");
+    gradient.addColorStop(1, "rgba(255, 255, 255, 0)");
 
     ctx.fillStyle = gradient;
+
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    // Añadir un sutil patrón de puntos
-    ctx.fillStyle = "rgba(255, 255, 255, 0.03)"; // Puntos muy sutiles
-    for (let x = 0; x < canvas.width; x += 20) {
-      for (let y = 0; y < canvas.height; y += 20) {
-        ctx.beginPath();
-        ctx.arc(x, y, 1, 0, Math.PI * 2);
-        ctx.fill();
-      }
-    }
+    // Dibujar puntos
+    dots.forEach((dot) => {
+      ctx.beginPath();
+      ctx.arc(dot.x, dot.y, dot.size, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(255, 255, 255, ${dot.opacity * 0.5})`;
+      ctx.fill();
+    });
   }
 
   function init() {
     resizeCanvas();
-    drawBackground();
 
-    window.addEventListener("resize", () => {
-      resizeCanvas();
-      drawBackground();
-    });
+    // Crear puntos iniciales
+    for (let i = 0; i < numberOfDots; i++) {
+      dots.push(createDot());
+    }
+
+    // Event listener para resize
+    window.addEventListener("resize", resizeCanvas);
+
+    // Dibujar una sola vez ya que no hay animación
+    drawBackground();
   }
 
   init();
 </script>
-<!-- <div class="light">
-  <slot />
-</div>
-<style>
-  .light {
-    top: 0;
-    z-index: -1;
-    width: 100%;
-    background-image: url("../assets/light.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-  }
-</style> -->
