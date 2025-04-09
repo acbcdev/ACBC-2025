@@ -25,7 +25,9 @@ const { title, description, image = "/og.jpg", canonical } = Astro.props;
     />
   </head>
   <body class="overflow-x-hidden w-full">
-    <div class="w-[100%] md:w-[55%] mx-auto grid place-content-center">
+    <div
+      class="w-[100%] md:w-[70%] lg:w-[60%] xl:w-[55%] mx-auto grid place-content-center"
+    >
       <slot />
     </div>
     <Analytics />
