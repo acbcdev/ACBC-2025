@@ -9,7 +9,7 @@
 
   // Configuración de puntos
   const dots: Dot[] = [];
-  const numberOfDots = 250;
+  const numberOfDots = window.innerWidth > window.innerHeight ? 150 : 50;
 
   interface Dot {
     x: number;
