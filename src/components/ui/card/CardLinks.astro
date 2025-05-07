@@ -1,0 +1,32 @@
+---
+import GithubSvg from "@/svg/github.svg";
+import LinkSvg from "@/svg/link.svg";
+
+type Props = {
+  link: string;
+  github: string;
+};
+
+const { link, github } = Astro.props;
+---
+
+<div
+  class="flex absolute gap-x-2 bg-background/20 scale-0 p-2 rounded-full group-hover/card:opacity-100 group-hover/card:scale-100 opacity-0 duration-150 top-3 right-3"
+>
+  <a
+    href={github}
+    class="hover:opacity-100 opacity-80"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <GithubSvg class="size-5" />
+  </a>
+  <a
+    href={link}
+    class="hover:opacity-100 opacity-80"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <LinkSvg class="size-5" />
+  </a>
+</div>

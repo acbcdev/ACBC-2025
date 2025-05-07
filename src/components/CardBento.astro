@@ -1,0 +1,47 @@
+---
+import GithubSvg from "@/svg/github.svg";
+import LinkSvg from "@/svg/link.svg";
+import Image from "astro/components/Image.astro";
+
+type Props = {
+  link: string;
+  img: string;
+  name: string;
+  description: string;
+  github: string;
+  favicon?: string;
+  classNames: string;
+};
+
+const { link, img, name, description, github, favicon, classNames } =
+  Astro.props;
+---
+
+<article
+  class:list={[
+    "rounded-lg z-10 relative border-border backdrop-blur-3xl overflow-hidden group/card ",
+    classNames,
+  ]}
+>
+  <a
+    href={link}
+    target="_blank"
+    aria-label={`link for ${name}`}
+    class="absolute top-2 right-2"><LinkSvg /></a
+  >
+  <div class="flex">
+    <main>
+      <h3
+        class="text-lg line-clamp-1 md:line-clamp-none md:text-xl xl:text-2xl font-bold py-2"
+      >
+        {name}
+      </h3>
+
+      <p class="text-primary/70 text-xs mt-2 md:mt-1 line-clamp-4 md:text-base">
+        {description}
+      </p>
+    </main>
+
+    <img src={img} alt={`${name} mockup image`} class="w-full" />
+  </div>
+</article>

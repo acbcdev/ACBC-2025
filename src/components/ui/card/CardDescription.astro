@@ -1,0 +1,39 @@
+---
+interface Props {
+  description: string;
+  tags: string[];
+  hiddenTags?: boolean;
+  hiddenDescription?: boolean;
+  classDescription?: string;
+}
+const {
+  description,
+  tags,
+  hiddenTags = false,
+  hiddenDescription = false,
+  classDescription,
+} = Astro.props;
+---
+
+{
+  !hiddenDescription && (
+    <p
+      class:list={[classDescription, "text-muted-foreground"]}
+      title={description}
+    >
+      {description}
+    </p>
+  )
+}
+
+{
+  !hiddenTags && (
+    <div class="flex gap-x-2">
+      {tags.map((tag) => (
+        <span class="text-primary/70 text-xs mt-2 md:mt-1  md:text-base">
+          #{tag}
+        </span>
+      ))}
+    </div>
+  )
+}
