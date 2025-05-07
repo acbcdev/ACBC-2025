@@ -8,10 +8,13 @@ interface Props {
 const { link, img, alt } = Astro.props;
 ---
 
-<a href={link} target="_blank">
-  <img
-    src={img}
-    class="rounded-lg group-hover/card:scale-102 duration-200 blur-3xl"
-    alt={alt}
-  />
+<a href={link} target="_blank" class="block overflow-hidden rounded-lg h-full">
+  <div class="relative h-full aspect-video md:aspect-auto">
+    <img
+      src={img}
+      class="w-full h-full object-cover rounded-lg transition-all duration-300 group-hover/card:scale-105 group-hover/card:brightness-110"
+      alt={alt}
+      loading="lazy"
+    />
+  </div>
 </a>
