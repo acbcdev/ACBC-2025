@@ -1,15 +1,28 @@
 ---
 interface Props {
   className?: string;
+  bgImage?: string;
 }
-const { className } = Astro.props;
+const { className, bgImage } = Astro.props;
 ---
 
 <section
   class:list={[
-    "bg-accent p-4 rounded-3xl group/card relative overflow-hidden",
+    "bg-accent/80 backdrop-blur-md p-4 rounded-3xl group/card relative overflow-hidden transition-all duration-300",
+    "hover:bg-accent/90 hover:shadow-lg hover:scale-101",
+    "border border-white/10",
     className,
   ]}
 >
-  <slot />
+  {
+    bgImage && (
+      <div
+        class="absolute inset-0 -z-10 opacity-30 blur-sm group-hover/card:blur-none group-hover/card:opacity-40 transition-opacity duration-300 "
+        style={`background-image: url(${bgImage}); background-size: cover; background-position: center;`}
+      />
+    )
+  }
+  <div class="relative z-10">
+    <slot />
+  </div>
 </section>
