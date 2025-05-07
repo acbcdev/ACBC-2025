@@ -51,6 +51,7 @@
   color utility to any element that depends on these defaults.
 */
 @layer base {
+
   *,
   ::after,
   ::before,
@@ -86,7 +87,7 @@
     --chart-3: 197 37% 24%;
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
-    --radius: 0.5rem;
+    --radius: 1rem;
     --detail-high-contrast: rgb(101, 101, 101);
     --text-high-contrast-rgb-value: 230, 230, 230;
     --detail-medium-contrast: rgb(25, 25, 25);
