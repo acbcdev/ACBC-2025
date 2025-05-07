@@ -3,119 +3,105 @@ import WWW from "@/svg/www.svg";
 import { projects } from "@/const/projects";
 import Title from "@/components/Title.astro";
 import CardLinks from "@/components/ui/card/CardLinks.astro";
-import CardImage from "@/components/ui/card/CardImage.astro";
 import CardTitle from "@/components/ui/card/CardTitle.astro";
 import CardDescription from "@/components/ui/card/CardDescription.astro";
 import Card from "@/components/ui/card/Card.astro";
 ---
 
-<section class="space-y-4 my-10 px-4 md:px-10 grid place-content-center">
+<section class="space-y-4 my-10 px-4 grid place-content-center">
   <Title>
     <WWW /> Projects
   </Title>
 
-  <div class="grid grid-cols-6 grid-rows-3 gap-4 z-10">
-    <Card className="col-span-6 flex">
-      <div class="my-4 mt-8 flex flex-col justify-between">
+  <div class="grid md:grid-cols-6 md:grid-rows-3 gap-4 z-10">
+    <Card className="md:col-span-6 p-6 " bgImage={projects[0].img}>
+      <div class="flex items-center justify-between py-4">
         <CardTitle
           name={projects[0].name}
           link={projects[0].link}
           favicon={projects[0].favicon}
         />
-        <p class="text-muted-foreground">{projects[0].description}</p>
-        <div class="flex gap-x-2">
-          {
-            projects[0].tags.map((tag) => (
-              <span class="text-primary/70 text-xs mt-2 md:mt-1 line-clamp-4 md:text-base">
-                #{tag}
-              </span>
-            ))
-          }
-        </div>
+        <CardLinks link={projects[0].link} github={projects[0].github} />
       </div>
-      <CardImage
-        img={projects[0].img}
-        alt={`${projects[0].name} mockup image`}
-        link={projects[0].link}
+      <CardDescription
+        description={projects[0].description}
+        tags={projects[0].tags}
       />
-
-      <CardLinks link={projects[0].link} github={projects[0].github} />
     </Card>
-    <Card className="col-span-2 row-start-2 flex flex-col justify-between ">
-      <CardTitle
-        name={projects[1].name}
-        link={projects[1].link}
-        favicon={projects[1].favicon}
-      />
+
+    <Card
+      className="md:col-span-2 md:row-start-2 p-4 flex flex-col gap-4"
+      bgImage={projects[1].img}
+    >
+      <div class="flex items-center justify-between py-4">
+        <CardTitle
+          name={projects[1].name}
+          link={projects[1].link}
+          favicon={projects[1].favicon}
+        />
+        <CardLinks link={projects[1].link} github={projects[1].github} />
+      </div>
+
       <CardDescription
         description={projects[1].description}
         tags={projects[1].tags}
         classDescription="line-clamp-2"
       />
-      <CardImage
-        img={projects[1].img}
-        alt={`${projects[1].name} mockup image`}
-        link={projects[1].link}
-      />
-      <CardLinks link={projects[1].link} github={projects[1].github} />
     </Card>
-    <Card className="col-span-4 col-start-3 row-start-2 flex">
-      <div class="my-4 mt-8 flex flex-col justify-between">
+
+    <Card
+      className="md:col-span-4 md:col-start-3 md:row-start-2 p-4"
+      bgImage={projects[2].img}
+    >
+      <div class="flex items-center justify-between py-4">
         <CardTitle
           name={projects[2].name}
           link={projects[2].link}
           favicon={projects[2].favicon}
         />
-        <CardDescription
-          description={projects[2].description}
-          tags={projects[2].tags}
-        />
+        <CardLinks link={projects[2].link} github={projects[2].github} />
       </div>
 
-      <CardImage
-        img={projects[2].img}
-        alt={`${projects[2].name} mockup image`}
-        link={projects[2].link}
+      <CardDescription
+        description={projects[2].description}
+        tags={projects[2].tags}
       />
-      <CardLinks link={projects[2].link} github={projects[2].github} />
     </Card>
-    <Card className="col-span-3 row-start-3 flex">
-      <CardImage
-        img={projects[3].img}
-        alt={`${projects[3].name} mockup image`}
-        link={projects[3].link}
-      />
-      <div class="my-4 mt-8 flex flex-col justify-between">
+
+    <Card
+      className="md:col-span-3 md:row-start-3 p-4"
+      bgImage={projects[3].img}
+    >
+      <div class="flex items-center justify-between py-4">
         <CardTitle
           name={projects[3].name}
           link={projects[3].link}
           favicon={projects[3].favicon}
         />
-        <CardDescription
-          description={projects[3].description}
-          tags={projects[3].tags}
-        />
+        <CardLinks link={projects[3].link} github={projects[3].github} />
       </div>
-      <CardLinks link={projects[3].link} github={projects[3].github} />
+      <CardDescription
+        description={projects[3].description}
+        tags={projects[3].tags}
+      />
     </Card>
-    <Card className="col-span-3 col-start-4 row-start-3 flex">
-      <div class="my-4 mt-8 flex flex-col justify-between">
+
+    <Card
+      className="md:col-span-3 md:col-start-4 md:row-start-3 p-4"
+      bgImage={projects[4].img}
+    >
+      <div class="flex items-center justify-between py-4">
         <CardTitle
           name={projects[4].name}
           link={projects[4].link}
           favicon={projects[4].favicon}
         />
-        <CardDescription
-          description={projects[4].description}
-          tags={projects[4].tags}
-        />
+        <CardLinks link={projects[4].link} github={projects[4].github} />
       </div>
-      <CardImage
-        img={projects[4].img}
-        alt={`${projects[4].name} mockup image`}
-        link={projects[4].link}
+      <CardDescription
+        description={projects[4].description}
+        tags={projects[4].tags}
       />
-      <CardLinks link={projects[4].link} github={projects[4].github} />
     </Card>
   </div>
 </section>
