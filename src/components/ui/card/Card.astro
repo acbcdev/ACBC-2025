@@ -1,0 +1,15 @@
+---
+interface Props {
+  className?: string;
+}
+const { className } = Astro.props;
+---
+
+<section
+  class:list={[
+    "bg-accent p-4 rounded-3xl group/card relative overflow-hidden",
+    className,
+  ]}
+>
+  <slot />
+</section>
