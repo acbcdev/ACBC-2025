@@ -18,7 +18,7 @@ const {
 {
   !hiddenDescription && (
     <p
-      class:list={[classDescription, "text-muted-foreground"]}
+      class:list={[classDescription, "text-foreground/80 "]}
       title={description}
     >
       {description}
@@ -28,9 +28,9 @@ const {
 
 {
   !hiddenTags && (
-    <div class="flex gap-x-2">
+    <div class="flex flex-wrap gap-2 p-4">
       {tags.map((tag) => (
-        <span class="text-primary/70 text-xs mt-2 md:mt-1  md:text-base">
+        <span class="text-primary/70 text-xs md:text-sm bg-background/20 px-2 py-1 rounded-full">
           #{tag}
         </span>
       ))}
