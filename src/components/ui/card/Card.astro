@@ -17,7 +17,7 @@ const { className, bgImage } = Astro.props;
   {
     bgImage && (
       <div
-        class="absolute inset-0 -z-10 opacity-20 blur-xs group-hover/card:blur-[1px] group-hover/card:opacity-30 transition-all duration-300 group-hover/card:scale-105"
+        class="absolute inset-0 -z-10 blur-2xl group-hover/card:blur-[1px] group-hover/card:opacity-80 transition-all duration-300 group-hover/card:scale-105"
         style={`background-image: url(${bgImage}); background-size: cover; background-position: center;`}
       />
     )
