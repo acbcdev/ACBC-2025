@@ -1,5 +1,5 @@
 export type ProyectType = {
-  link: string;
+  link?: string;
   github: string;
   img: string;
   name: string;

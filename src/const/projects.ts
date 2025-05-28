@@ -30,7 +30,7 @@ export const projects: ProyectType[] = [
   },
   {
     name: "Spooky Histories",
-    link: "https://hackthon-cloudinary.acbc.dev/",
+    // link: "https://hackthon-cloudinary.acbc.dev/",
     classNames: "col-span-3 row-start-2",
     github: "https://github.com/acbcdev/hackthon-cloudinary",
     img: "/proyects/spooky.webp",

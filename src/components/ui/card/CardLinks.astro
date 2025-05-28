@@ -3,7 +3,7 @@ import GithubSvg from "@/svg/github.svg";
 import LinkSvg from "@/svg/link.svg";
 
 type Props = {
-  link: string;
+  link?: string;
   github: string;
 };
 
@@ -25,13 +25,17 @@ const { link, github } = Astro.props;
   >
     <GithubSvg class="size-5" />
   </a>
-  <a
-    href={link}
-    target="_blank"
-    class="opacity-70 hover:opacity-100 duration-150"
-    rel="noopener noreferrer"
-    title="Visit live site"
-  >
-    <LinkSvg class="size-5" />
-  </a>
+  {
+    link && (
+      <a
+        href={link}
+        target="_blank"
+        class="opacity-70 hover:opacity-100 duration-150"
+        rel="noopener noreferrer"
+        title="Visit live site"
+      >
+        <LinkSvg class="size-5" />
+      </a>
+    )
+  }
 </div>
