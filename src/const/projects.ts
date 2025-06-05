@@ -34,7 +34,7 @@ export const projects: ProyectType[] = [
     classNames: "col-span-3 row-start-2",
     github: "https://github.com/acbcdev/hackthon-cloudinary",
     img: "/proyects/spooky.webp",
-    favicon: "https://hackthon-cloudinary.acbc.dev/icon.svg",
+    // favicon: "https://hackthon-cloudinary.acbc.dev/icon.svg",
     tags: ["Nextjs", "Tailwindcss", "Cloudinary"],
     description:
       "Interactive AI storyteller that generates dynamic spooky tales from your images. Choose your path, modify images, and craft your own haunting adventure ",
