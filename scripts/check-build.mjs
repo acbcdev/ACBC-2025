@@ -27,7 +27,7 @@ for (const hex of ["#373739", "#2d2154"]) {
 
 const cardLinks = [
   ...html.matchAll(
-    /<div\b[^>]*class="([^"]*)"[^>]*>\s*<a\b[^>]*title="View GitHub repository"/g,
+    /<div\b[^>]*class="([^"]*)"[^>]*>\s*<a\b[^>]*title="(?:View GitHub repository|Visit live site)"/g,
   ),
 ].map((m) => m[1].split(/\s+/));
 check(cardLinks.length > 0, "no card link groups found");
