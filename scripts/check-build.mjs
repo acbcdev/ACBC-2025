@@ -13,6 +13,14 @@ check(
   "an <a> element contains a <button>",
 );
 
+const h1 = (html.match(/<h1\b[^>]*>([\s\S]*?)<\/h1>/i)?.[1] ?? "")
+  .replace(/<[^>]+>/g, " ")
+  .replace(/\s+/g, " ");
+check(
+  h1.includes("I'm Camilo Blandon") && !h1.includes("I'm a Camilo"),
+  "hero headline must read \"I'm Camilo Blandon\"",
+);
+
 for (const hex of ["#373739", "#2d2154"]) {
   check(!html.toLowerCase().includes(hex), `markup contains hardcoded ${hex}`);
 }
