@@ -26,20 +26,15 @@ import Grid from "@/components/Grid.astro";
     </section>
 
     <footer class="flex gap-x-2">
-      <a href="https://www.linkedin.com/in/acbc-dev/">
-        <Button> Linkedin <LinkedinSvg class="fill-white" /></Button>
-      </a>
-
-      <a href="https://github.com/acbcdev">
-        <Button>
-          GitHub <GithubSvg />
-        </Button>
-      </a>
-      <a href="/cv.pdf" target="_blank">
-        <Button>
-          Resume <CVSVG />
-        </Button>
-      </a>
+      <Button href="https://www.linkedin.com/in/acbc-dev/">
+        Linkedin <LinkedinSvg class="fill-white" />
+      </Button>
+      <Button href="https://github.com/acbcdev">
+        GitHub <GithubSvg />
+      </Button>
+      <Button href="/cv.pdf">
+        Resume <CVSVG />
+      </Button>
     </footer>
   </section>
 </Grid>
