@@ -7,26 +7,62 @@ type Props = HTMLAttributes<"a">;
   target="_blank"
   rel="noopener noreferrer"
   {...Astro.props}
-  class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 h-9 px-4 py-2"
+  class="relative isolate inline-flex items-center gap-4 whitespace-nowrap rounded-xl px-5 py-2 text-lg leading-6 text-zinc-100 transition-transform [&_svg]:pointer-events-none [&_svg]:size-[18px] [&_svg]:shrink-0"
 >
   <slot />
 </a>
 
 <style>
+  /* btn-oguz from Figma, scaled x1.29 (14px -> 18px text) */
   a {
-    color: hsl(var(--foreground));
-    background: radial-gradient(
-      100% 100% at 50% 70%,
-      hsl(var(--accent)) 0%,
-      transparent 85%
-    );
-    transition-duration: 200ms;
-    border: 1px solid hsl(var(--border));
-    backdrop-filter: blur(60px);
+    background:
+      radial-gradient(
+        75.35% 191.94% at 50.44% 191.94%,
+        rgba(125, 82, 244, 0.62) 0%,
+        rgba(125, 82, 244, 0) 100%
+      ),
+      radial-gradient(
+        100% 100% at 50% 0%,
+        rgba(255, 255, 255, 0.12) 0%,
+        rgba(255, 255, 255, 0) 100%
+      );
+    background-blend-mode: lighten, normal;
+    backdrop-filter: blur(6px);
 
     &:hover {
       translate: 0 -2px;
-      border-color: hsl(var(--ring));
     }
+  }
+
+  /* noise fill, 14% */
+  a::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    background: url(/noise.png) 0 0 / 18px 18px;
+    opacity: 0.14;
+    pointer-events: none;
+  }
+
+  /* stroke: white 5% + top-left white 12% fading out by ~25px */
+  a::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background:
+      linear-gradient(
+        165.6deg,
+        rgba(255, 255, 255, 0.12) 8px,
+        transparent 25.6px
+      ),
+      rgba(255, 255, 255, 0.07);
+    mask:
+      linear-gradient(#000 0 0) content-box exclude,
+      linear-gradient(#000 0 0);
+    pointer-events: none;
   }
 </style>
