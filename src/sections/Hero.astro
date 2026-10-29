@@ -1,46 +1,25 @@
 ---
-// import { Button } from "@/components/ui/button";
 import GithubSvg from "@/svg/github.svg";
 import LinkedinSvg from "@/svg/linkedin.svg";
-import CVSVG from "@/svg/cv.astro";
 import Button from "@/components/Button.astro";
-import Grid from "@/components/Grid.astro";
 ---
 
-<Grid>
-  <section class="my-20 flex flex-col px-4 items-start justify-center gap-y-5">
-    <header class="flex flex-col items-start gap-y-4">
-      <span
-        class="inline-flex items-center gap-x-2 rounded-full border px-3 py-1 text-sm text-muted-foreground"
-      >
-        <span class="size-2 rounded-full bg-accent-foreground"></span>
-        Available for work
-      </span>
-      <h1 class="text-5xl md:text-6xl font-bold tracking-tight text-balance">
-        Hi, I'm <span
-          class="bg-linear-to-r from-accent-foreground to-foreground bg-clip-text text-transparent"
-          >Camilo Blandon</span
-        >
-      </h1>
-    </header>
-    <section class="text-card-foreground/90 max-w-[80ch]">
-      <p>
-        I'm a fullstack developer building scalable, high-quality applications
-        with React, Next.js, and TypeScript. I focus on performance, responsive
-        design, and maintainable code.
-      </p>
-    </section>
+<section class="mt-32 mb-20 flex flex-col px-4 items-start gap-y-6">
+  <h1 class="text-3xl font-extrabold leading-none tracking-tight">
+    Hi<br />I'm Camilo Blandon
+  </h1>
+  <p class="text-muted-foreground text-lg max-w-[65ch] text-pretty">
+    I'm a fullstack developer building scalable, high-quality applications with
+    React, Next.js, and TypeScript. I focus on performance, responsive design,
+    and maintainable code.
+  </p>
 
-    <footer class="flex gap-x-2">
-      <Button href="https://www.linkedin.com/in/acbc-dev/">
-        Linkedin <LinkedinSvg class="fill-white" />
-      </Button>
-      <Button href="https://github.com/acbcdev">
-        GitHub <GithubSvg />
-      </Button>
-      <Button href="/cv.pdf">
-        Resume <CVSVG />
-      </Button>
-    </footer>
-  </section>
-</Grid>
+  <footer class="flex flex-wrap gap-3">
+    <Button href="https://www.linkedin.com/in/acbc-dev/">
+      Linkedin <LinkedinSvg />
+    </Button>
+    <Button href="https://github.com/acbcdev">
+      Github <GithubSvg />
+    </Button>
+  </footer>
+</section>
