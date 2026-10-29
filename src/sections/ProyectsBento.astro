@@ -1,107 +1,145 @@
 ---
-import WWW from "@/svg/www.svg";
+import Terminal from "@/svg/terminal.svg";
+import GithubSvg from "@/svg/github.svg";
+import ArrowSvg from "@/svg/arrow-up-right.svg";
 import { projects } from "@/const/projects";
 import Title from "@/components/Title.astro";
-import CardLinks from "@/components/ui/card/CardLinks.astro";
-import CardTitle from "@/components/ui/card/CardTitle.astro";
-import CardDescription from "@/components/ui/card/CardDescription.astro";
-import Card from "@/components/ui/card/Card.astro";
 ---
 
-<section class="space-y-4 my-10 px-4 grid place-content-center">
+<section class="my-20 px-4 grid gap-8">
   <Title>
-    <WWW /> Projects
+    <Terminal /> Projects
   </Title>
 
-  <div class="grid mt-6 md:grid-cols-6 md:grid-rows-3 gap-4 z-10">
-    <Card className="md:col-span-6 p-6 " bgImage={projects[0].img}>
-      <div class="flex items-center justify-between py-4">
-        <CardTitle
-          name={projects[0].name}
-          link={projects[0].link}
-          favicon={projects[0].favicon}
-        />
-        <CardLinks link={projects[0].link} github={projects[0].github} />
-      </div>
-      <CardDescription
-        description={projects[0].description}
-        tags={projects[0].tags}
-      />
-    </Card>
-
-    <Card
-      className="md:col-span-2 md:row-start-2 p-4 flex flex-col gap-4"
-      bgImage={projects[1].img}
-    >
-      <div class="flex items-center justify-between py-4">
-        <CardTitle
-          name={projects[1].name}
-          link={projects[1].link}
-          favicon={projects[1].favicon}
-        />
-        <CardLinks link={projects[1].link} github={projects[1].github} />
-      </div>
-
-      <CardDescription
-        description={projects[1].description}
-        tags={projects[1].tags}
-        classDescription="line-clamp-2"
-      />
-    </Card>
-
-    <Card
-      className="md:col-span-4 md:col-start-3 md:row-start-2 p-4"
-      bgImage={projects[2].img}
-    >
-      <div class="flex items-center justify-between py-4">
-        <CardTitle
-          name={projects[2].name}
-          link={projects[2].link}
-          favicon={projects[2].favicon}
-        />
-        <CardLinks link={projects[2].link} github={projects[2].github} />
-      </div>
-
-      <CardDescription
-        description={projects[2].description}
-        tags={projects[2].tags}
-      />
-    </Card>
-
-    <Card
-      className="md:col-span-3 md:row-start-3 p-4"
-      bgImage={projects[3].img}
-    >
-      <div class="flex items-center justify-between py-4">
-        <CardTitle
-          name={projects[3].name}
-          link={projects[3].link}
-          favicon={projects[3].favicon}
-        />
-        <CardLinks link={projects[3].link} github={projects[3].github} />
-      </div>
-      <CardDescription
-        description={projects[3].description}
-        tags={projects[3].tags}
-      />
-    </Card>
-
-    <Card
-      className="md:col-span-3 md:col-start-4 md:row-start-3 p-4"
-      bgImage={projects[4].img}
-    >
-      <div class="flex items-center justify-between py-4">
-        <CardTitle
-          name={projects[4].name}
-          link={projects[4].link}
-          favicon={projects[4].favicon}
-        />
-        <CardLinks link={projects[4].link} github={projects[4].github} />
-      </div>
-      <CardDescription
-        description={projects[4].description}
-        tags={projects[4].tags}
-      />
-    </Card>
+  <!-- ponytail: CSS scroll-snap carousel, no Embla -->
+  <div
+    id="projects-track"
+    class="flex gap-6 overflow-x-auto snap-x snap-mandatory [scrollbar-width:none]"
+  >
+    {
+      projects.map((p) => (
+        <article class="glass-border snap-start shrink-0 basis-full md:basis-[calc(50%-0.75rem)] flex flex-col rounded-xl backdrop-blur-[6px] bg-[radial-gradient(50%_50%_at_50%_50%,rgb(255_255_255/0.12),transparent)]">
+          <div class="glass-border rounded-xl overflow-hidden">
+            <img
+              src={p.img}
+              alt={`${p.name} screenshot`}
+              class="aspect-[2.13/1] w-full object-cover object-top"
+              loading="lazy"
+            />
+          </div>
+          <div class="flex flex-1 flex-col gap-3 p-3">
+            <header class="flex items-center justify-between gap-2">
+              <h3 class="text-2xl font-semibold text-fade">{p.name}</h3>
+              <div class="flex gap-3 text-zinc-100 [&_svg]:size-5">
+                <a
+                  href={p.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title="GitHub repository"
+                  class="opacity-90 hover:opacity-100 transition-opacity"
+                >
+                  <GithubSvg />
+                </a>
+                {p.link && (
+                  <a
+                    href={p.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    title="Live site"
+                    class="opacity-90 hover:opacity-100 transition-opacity"
+                  >
+                    <ArrowSvg />
+                  </a>
+                )}
+              </div>
+            </header>
+            <p
+              class="text-lg line-clamp-4 text-fade"
+              title={p.description}
+            >
+              {p.description.trim()}
+            </p>
+          </div>
+        </article>
+      ))
+    }
   </div>
+
+  <nav
+    id="projects-dots"
+    class="flex justify-center gap-2.5"
+    aria-label="Projects pages"
+  >
+  </nav>
 </section>
+
+<style>
+  /* white/5 border + top-left highlight, like Figma double stroke */
+  .glass-border {
+    position: relative;
+  }
+  .glass-border::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    pointer-events: none;
+    z-index: 1;
+    background:
+      linear-gradient(135deg, rgb(255 255 255 / 0.12) 10%, transparent 40%),
+      rgb(255 255 255 / 0.05);
+    mask:
+      linear-gradient(#000 0 0) content-box exclude,
+      linear-gradient(#000 0 0);
+  }
+  /* vertical white 70% -> 100% text fill */
+  .text-fade {
+    background: linear-gradient(rgb(255 255 255 / 0.7), #fff);
+    background-clip: text;
+    color: transparent;
+  }
+</style>
+
+<script>
+  const track = document.getElementById("projects-track")!;
+  const dotsNav = document.getElementById("projects-dots")!;
+  const cards = [...track.children] as HTMLElement[];
+  let dots: HTMLButtonElement[] = [];
+
+  const perPage = () =>
+    Math.max(1, Math.round(track.clientWidth / cards[0].offsetWidth));
+
+  function render() {
+    const pages = Math.ceil(cards.length / perPage());
+    dotsNav.innerHTML = "";
+    dots = Array.from({ length: pages }, (_, i) => {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.ariaLabel = `Page ${i + 1}`;
+      b.className =
+        "relative isolate size-4 rounded-full grid place-content-center bg-[radial-gradient(100%_100%_at_50%_0%,rgba(255,255,255,0.12),transparent)] shadow-[0_-1px_0_rgba(255,255,255,0.06),0_0_0_1px_rgba(255,255,255,0.06),0_0_1px_1.5px_rgba(0,0,0,0.24),0_0_0_1px_#27272a,0_2px_2px_rgba(0,0,0,0.24)] before:absolute before:inset-0 before:-z-10 before:rounded-full before:bg-[url(/noise.png)] before:bg-size-[14.2px] before:opacity-[0.14] after:size-2 after:rounded-full after:bg-linear-to-b after:from-white/70 after:to-white after:opacity-0 data-active:after:opacity-100 after:transition-opacity";
+      b.onclick = () =>
+        track.scrollTo({
+          left: cards[i * perPage()].offsetLeft - track.offsetLeft,
+          behavior: "smooth",
+        });
+      dotsNav.append(b);
+      return b;
+    });
+    update();
+  }
+
+  function update() {
+    const max = track.scrollWidth - track.clientWidth;
+    const page =
+      track.scrollLeft >= max - 2
+        ? dots.length - 1
+        : Math.round(track.scrollLeft / (cards[0].offsetWidth * perPage()));
+    dots.forEach((d, i) => d.toggleAttribute("data-active", i === page));
+  }
+
+  track.addEventListener("scroll", update, { passive: true });
+  window.addEventListener("resize", render);
+  render();
+</script>
