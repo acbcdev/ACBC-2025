@@ -96,6 +96,48 @@ import Title from "@/components/Title.astro";
     background-clip: text;
     color: transparent;
   }
+  /* dots are created in JS, so plain CSS instead of Tailwind classes the scanner may miss */
+  #projects-dots :global(.dot) {
+    position: relative;
+    isolation: isolate;
+    display: grid;
+    place-content: center;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 9999px;
+    background: radial-gradient(
+      100% 100% at 50% 0%,
+      rgb(255 255 255 / 0.12),
+      transparent
+    );
+    box-shadow:
+      0 -1px 0 rgb(255 255 255 / 0.06),
+      0 0 0 1px rgb(255 255 255 / 0.06),
+      0 0 1px 1.5px rgb(0 0 0 / 0.24),
+      0 0 0 1px #27272a,
+      0 2px 2px rgb(0 0 0 / 0.24);
+  }
+  #projects-dots :global(.dot)::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    background: url(/noise.png) 0 0 / 14.2px;
+    opacity: 0.14;
+  }
+  #projects-dots :global(.dot)::after {
+    content: "";
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 9999px;
+    background: linear-gradient(rgb(255 255 255 / 0.7), #fff);
+    opacity: 0;
+    transition: opacity 150ms;
+  }
+  #projects-dots :global(.dot[data-active])::after {
+    opacity: 1;
+  }
 </style>
 
 <script>
@@ -114,8 +156,7 @@ import Title from "@/components/Title.astro";
       const b = document.createElement("button");
       b.type = "button";
       b.ariaLabel = `Page ${i + 1}`;
-      b.className =
-        "relative isolate size-4 rounded-full grid place-content-center bg-[radial-gradient(100%_100%_at_50%_0%,rgba(255,255,255,0.12),transparent)] shadow-[0_-1px_0_rgba(255,255,255,0.06),0_0_0_1px_rgba(255,255,255,0.06),0_0_1px_1.5px_rgba(0,0,0,0.24),0_0_0_1px_#27272a,0_2px_2px_rgba(0,0,0,0.24)] before:absolute before:inset-0 before:-z-10 before:rounded-full before:bg-[url(/noise.png)] before:bg-size-[14.2px] before:opacity-[0.14] after:size-2 after:rounded-full after:bg-linear-to-b after:from-white/70 after:to-white after:opacity-0 data-active:after:opacity-100 after:transition-opacity";
+      b.className = "dot";
       b.onclick = () =>
         track.scrollTo({
           left: cards[i * perPage()].offsetLeft - track.offsetLeft,
