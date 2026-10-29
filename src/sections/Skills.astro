@@ -1,5 +1,5 @@
 ---
-import Brain from "@/svg/brain.svg";
+import Terminal from "@/svg/terminal.svg";
 import Title from "@/components/Title.astro";
 import Grid from "@/components/Grid.astro";
 interface skillType {
@@ -7,34 +7,35 @@ interface skillType {
   name: string;
 }
 export const SkillsICons: skillType[] = [
-  { src: "/skills/html.svg", name: "HTML" },
-  { src: "/skills/css.svg", name: "CSS" },
+  { src: "/skills/html.svg", name: "Html" },
+  { src: "/skills/css.svg", name: "Css" },
   { src: "/skills/javascript.svg", name: "Javascript" },
   { src: "/skills/tailwindcss.svg", name: "Tailwindcss" },
   { src: "/skills/react.svg", name: "React" },
-  { src: "/skills/nextjs.svg", name: "Next.js" },
+  { src: "/skills/nextjs.svg", name: "Nextjs" },
   { src: "/skills/typescript.svg", name: "Typescript" },
-  { src: "/skills/astro.svg", name: "Astro.js" },
+  { src: "/skills/astro.svg", name: "Astro" },
+  { src: "/skills/solidjs.svg", name: "Solidjs" },
   { src: "/skills/bash.svg", name: "Bash" },
-  {
-    src: "/skills/angular.svg",
-    name: "Angular",
-  },
+  { src: "/skills/angular.svg", name: "Angular" },
 ];
 ---
 
 <Grid>
-  <section class="grid gap-10 my-10 px-4 mb-20">
+  <section class="grid gap-8 my-10 px-4 mb-20">
     <Title>
-      <Brain /> Skills
+      <Terminal /> Skills
     </Title>
 
-    <section class="flex flex-wrap gap-2">
+    <!-- ponytail: chip styles copied from Title.astro, extract if a third use appears -->
+    <section class="flex flex-wrap gap-2.5">
       {
         SkillsICons.map(({ name, src }) => (
-          <div class="text-base md:text-xl hover:scale-105 duration-200 flex items-center justify-center gap-x-2  px-2  bg-gradient-to-r from-accent border-border py-1 rounded-xl border w-fit">
-            <img src={src} alt={name} class="size-6" />
-            {name}
+          <div class="relative isolate flex h-9 items-center gap-2.5 rounded-md pl-3 pr-4 text-base font-medium bg-[radial-gradient(100%_100%_at_50%_0%,rgba(255,255,255,0.12),transparent)] shadow-[0_-1px_0_rgba(255,255,255,0.06),0_0_0_1px_rgba(255,255,255,0.06),0_0_1px_1.5px_rgba(0,0,0,0.24),0_0_0_1px_#27272a,0_2px_2px_rgba(0,0,0,0.24)] before:absolute before:inset-0 before:-z-10 before:rounded-[inherit] before:bg-[url(/noise.png)] before:bg-size-[14.2px] before:opacity-[0.14]">
+            <img src={src} alt="" class="size-5" />
+            <span class="leading-none bg-linear-to-b from-white/70 from-9% to-white bg-clip-text text-transparent">
+              {name}
+            </span>
           </div>
         ))
       }
