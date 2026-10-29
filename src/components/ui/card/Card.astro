@@ -22,6 +22,9 @@ const { className, bgImage } = Astro.props;
       />
     )
   }
+  <div
+    class="absolute inset-0 -z-10 bg-linear-to-t from-background/90 to-transparent"
+  />
   <div class="relative z-10">
     <slot />
   </div>
