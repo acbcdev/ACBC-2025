@@ -13,6 +13,10 @@ check(
   "an <a> element contains a <button>",
 );
 
+for (const hex of ["#373739", "#2d2154"]) {
+  check(!html.toLowerCase().includes(hex), `markup contains hardcoded ${hex}`);
+}
+
 if (failures.length) {
   for (const f of failures) console.error(`FAIL: ${f}`);
   process.exit(1);

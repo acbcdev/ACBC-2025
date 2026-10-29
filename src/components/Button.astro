@@ -14,21 +14,19 @@ type Props = HTMLAttributes<"a">;
 
 <style>
   a {
-    --primary: #2d2154;
-    background-color: var(--background);
-    color: var(--foreground);
+    color: hsl(var(--foreground));
     background: radial-gradient(
       100% 100% at 50% 70%,
-      var(--primary) 0%,
+      hsl(var(--accent)) 0%,
       transparent 85%
     );
     transition-duration: 200ms;
-    border: 1px solid rgba(58, 57, 59, 0.795);
+    border: 1px solid hsl(var(--border));
     backdrop-filter: blur(60px);
 
     &:hover {
       translate: 0 -2px;
-      border-color: rgba(120, 118, 122, 0.9);
+      border-color: hsl(var(--ring));
     }
   }
 </style>
